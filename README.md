@@ -1,6 +1,6 @@
 # Statistical Data Science
 
-A collection of statistical analysis projects implemented in R, completed as part of a **Data Science Minor** at the **American University of Afghanistan (AUAF)**, Sprint 2021.
+A collection of statistical analysis projects implemented in R, completed as part of a **Data Science Minor** at the **American University of Afghanistan (AUAF)**, Spring 2021.
 
 ## Projects
 
