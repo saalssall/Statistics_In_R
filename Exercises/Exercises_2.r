@@ -187,3 +187,25 @@ won_25pct
 # Expected number won with 35% win rate
 won_35pct <- 3 * 0.35
 won_35pct
+
+# Probability of deal between 3000 and 7000
+upper_prob <- pnorm(7000, mean = 5000, sd = 2000) 
+lower_prob <- pnorm(3000, mean = 5000, sd = 2000)
+
+probability <- upper_prob - lower_prob
+probability
+# Calculate amount that 75% of deals will be more than
+qnorm(0.75, mean = 5000, sd = 2000, lower.tail = FALSE)
+
+# Calculate new average amount
+new_mean <- 5000 * 1.2
+
+# Calculate new standard deviation
+new_sd <- 2000 * 1.3
+
+# Simulate 36 sales
+new_sales <- new_sales %>% 
+  mutate(amount = rnorm(36, mean = new_mean, sd = new_sd))
+
+# Create histogram with 10 bins
+ggplot(new_sales, aes (amount)) + geom_histogram(bins = 10)
