@@ -52,3 +52,41 @@ food_consumption |>
 # 15.2kg being the typical country (better explained by median 
 #as mean is sensitive to outlier)
 
+# ─────────────────────────────────────────────
+# Measures of Spread
+# ─────────────────────────────────────────────
+
+# Calculate the variance of co2_emission
+var(food_consumption$co2_emmission)
+# Calculate the standard deviation of co2_emission
+sd(food_consumption$co2_emmission)
+
+#Calculate the quintiles of the co2_emission column 
+#of food_consumption that split up the data into 5 pieces.
+quantile(food_consumption$co2_emmission, probs = c(0, 0.2, 0.4, 0.6, 0.8, 1))
+
+#Calculate the quantiles of co2_emission that split up the data into ten pieces.
+quantile(food_consumption$co2_emmission, probs = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1))
+
+# Compute the 25th percentile and 75th percentile of co2_emission
+q1 <- quantile(food_consumption$co2_emmission, 0.25)
+q3 <- quantile(food_consumption$co2_emmission, 0.75)
+
+# Compute the IQR of co2_emission
+iqr <- q3 - q1
+
+# Calculate the lower and upper cutoffs for outliers
+lower <- q1 - 1.5 * iqr
+upper <- q3 + 1.5 * iqr
+
+lower
+upper
+
+# Filter emissions_by_country to find outliers
+food_consumption %>%
+  filter(co2_emmission < lower 
+         | co2_emmission > upper)
+
+
+
+
