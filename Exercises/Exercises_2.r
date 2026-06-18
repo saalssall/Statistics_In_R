@@ -105,3 +105,34 @@ set.seed(31)
 amir_deals %>%
   sample_n(5, prob = FALSE)
 
+restaurant_groups <- data.frame(
+  group_id   = c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J"),
+  group_size = c(2, 4, 6, 2, 2, 2, 3, 2, 4, 2)
+)
+
+# Create probability distribution
+# or builds a probability distribution 
+#table from the restaurant groups data
+size_distribution <- restaurant_groups |>
+  count(group_size) |>
+  mutate(probability = n / sum(n))
+
+size_distribution
+
+# Calculate expected group size
+expected_val <- sum(size_distribution$group_size *
+                      size_distribution$probability)
+expected_val
+
+# Analysis: If a random group walks into the restaurant,
+# you would expect them to have 2.9 people on average.
+
+# Probability of picking a group of 4 or more:
+# This calculates the probability that a randomly
+# picked group has 4 or more people.
+# Analysis: 30% chance that a randomly selected group
+# will have 4 or more people.
+
+size_distribution |>
+  filter(group_size >= 4) |>
+  summarize(prob_4_or_more = sum(probability))
