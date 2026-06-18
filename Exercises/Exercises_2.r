@@ -167,3 +167,23 @@ deals <- rbinom(52, 3, 0.3)
 # Calculate mean deals won per week
 mean(deals)
 
+# Probability of closing 3 out of 3 deals
+dbinom(3, 3, 0.3)
+
+# Probability of closing <= 1 deal out of 3 deals
+pbinom(1, 3, 0.3)
+
+# Probability of closing > 1 deal out of 3 deals
+pbinom(1, 3, 0.3, lower.tail = FALSE)
+
+# Expected number won with 30% win rate
+won_30pct <- 3 * 0.3
+won_30pct
+
+# Expected number won with 25% win rate
+won_25pct <- 3 * 0.25
+won_25pct
+
+# Expected number won with 35% win rate
+won_35pct <- 3 * 0.35
+won_35pct
