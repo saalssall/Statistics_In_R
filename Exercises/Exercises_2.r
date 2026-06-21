@@ -299,13 +299,24 @@ mean(rbinom(10000, 10, 0.3)>=5)
 
 #What is the expected value of a binomial distribution where 25 coins are flipped, each having a 30% chance of heads?
 # Calculate the expected value using the exact formula
-flip = 25 * 0.3
-flip
+set.seed(2017)
+
+expected_value = 25 * 0.3
+expected_value
 
 # Confirm with a simulation using rbinom
-flip <- rbinom(10000, 25, 0.3)
-mean(flip)
+simulated_values <- mean(rbinom(10000, 25, 0.3))
+simulated_values 
 
+# Calculate the variance using the exact formula
+set.seed(2017)
+
+variance = 25 * 0.3 * (1 - 0.3)
+variance
+
+# Confirm with a simulation using rbinom
+simulated_var <- var(rbinom(10000, 25, 0.3))
+simulated_var
 
 
 
