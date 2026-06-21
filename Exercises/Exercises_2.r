@@ -92,7 +92,8 @@ food_consumption %>%
 amir_deals <- data.frame(
   product = c("Product A", "Product B", "Product C", "Product D", "Product E",
               "Product F", "Product G", "Product H", "Product I", "Product J", "Product N"),
-  n = c(23, 62, 15, 40, 5, 11, 2, 8, 7, 2, 3)
+  n = c(23, 62, 15, 40, 5, 11, 2, 8, 7, 2, 3),
+  num_users = c(19, 43, 87, 83, 17, 2, 29, 13, 80, 23, 26)
 )
 
 # Calculate probability of each product
@@ -209,3 +210,42 @@ new_sales <- new_sales %>%
 
 # Create histogram with 10 bins
 ggplot(new_sales, aes (amount)) + geom_histogram(bins = 10)
+
+#Central limit theorem 
+# Set seed to 104
+set.seed(104)
+
+# Sample 20 num_users with replacement from amir_deals
+sample(amir_deals$num_users, 20, replace = TRUE) %>%
+  # Take mean
+  mean()
+
+# Repeat the above 100 times
+sample_means <- replicate(100, sample(amir_deals$num_users, size = 20, replace = TRUE) %>% mean())
+
+# Create data frame for plotting
+samples <- data.frame(mean = sample_means)
+
+# Histogram of sample means
+ggplot(samples, aes(mean)) + geom_histogram(bins=10)
+
+
+# Set seed to 321
+set.seed(321)
+# Take 30 samples of 20 values of num_users, take mean of each sample
+sample_means <- replicate(30, sample(all_deals$num_users, 20) %>% mean())
+# Calculate mean of sample_means
+mean(sample_means)
+# Calculate mean of num_users in amir_deals
+mean(amir_deals$num_users)
+
+# Probability of 5 responses
+dpois(5, lambda = 4)
+# Probability of 5 responses from coworker
+dpois(5, lambda = 5.5)
+# Probability of 2 or fewer responses
+ppois(2, lambda = 4, lower.tail = TRUE)
+# Probability of > 10 responses
+ppois(4, lambda = 10, lower.tail = TRUE)
+
+
