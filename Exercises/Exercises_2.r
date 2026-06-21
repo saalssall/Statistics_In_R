@@ -331,6 +331,12 @@ C <- rbinom(100000, 1, .7)
 prob_all_heads <- A & B & C
 mean(prob_all_heads)
 
+# Simulate 100,000 flips of a coin with a 60% chance of heads
+A <- rbinom(100000, 1, 0.6)
+# Simulate 100,000 flips of a coin with a 10% chance of heads
+B <- rbinom(100000, 1, 0.1)
+# Estimate the probability either A or B is heads
+mean (A | B)
 
 
 
