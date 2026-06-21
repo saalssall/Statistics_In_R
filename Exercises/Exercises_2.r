@@ -239,6 +239,7 @@ mean(sample_means)
 # Calculate mean of num_users in amir_deals
 mean(amir_deals$num_users)
 
+# Possion distribution
 # Probability of 5 responses
 dpois(5, lambda = 4)
 # Probability of 5 responses from coworker
@@ -246,6 +247,18 @@ dpois(5, lambda = 5.5)
 # Probability of 2 or fewer responses
 ppois(2, lambda = 4, lower.tail = TRUE)
 # Probability of > 10 responses
-ppois(4, lambda = 10, lower.tail = TRUE)
+ppois(10, lambda = 4, lower.tail = FALSE)
+
+
+# Exponential distribution
+# Probability response takes < 1 hour
+pexp(1, rate = 1/2.5)
+# Probability response takes > 4 hours
+pexp(4, rate = 1/2.5, lower.tail = FALSE)
+# Probability response takes 3-4 hours
+pexp(4, rate = 1/2.5) - pexp(3, rate = 1/2.5)
+
+
+
 
 
