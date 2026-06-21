@@ -338,8 +338,26 @@ B <- rbinom(100000, 1, 0.1)
 # Estimate the probability either A or B is heads
 mean (A | B)
 
+# Use rbinom to simulate 100,000 draws from each of X and Y
+X <- rbinom(100000, 10, 0.6)
+Y <- rbinom(100000, 10, 0.7)
 
+# Estimate the probability either X or Y is <= to 4
+mean((X <= 4 | Y <= 4))
+# Use pbinom to calculate the probabilities separately
+prob_X_less <- pbinom(4, 10, 0.6)
+prob_Y_less <- pbinom(4, 10, 0.7)
+# Combine these to calculate the exact probability either <= 4
+combined_prob <- prob_X_less + prob_Y_less - prob_X_less * prob_Y_less
+combined_prob
 
+#Practicing bayes theorem
+# Use dbinom to calculate the probability of 11/20 heads with fair or biased coin
+probability_fair <- dbinom(11, 20, 0.5) 
+probability_biased <- dbinom(11, 20, 0.75) 
+
+# Calculate the posterior probability that the coin is fair
+probability_fair / (probability_biased + probability_fair)
 
 
 
