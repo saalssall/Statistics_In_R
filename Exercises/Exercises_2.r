@@ -283,3 +283,8 @@ ggplot(world_happiness, aes(log_gdp_per_cap, happiness_score)) +
 # Calculate correlation
 cor(world_happiness$log_gdp_per_cap, world_happiness$happiness_score)
 
+
+# Calculate the probability that 2 are heads using dbinom
+dbinom(2, 10, 0.3)
+# Confirm your answer with a simulation using rbinom
+mean(rbinom(10000, 10, 0.3) == 2)
