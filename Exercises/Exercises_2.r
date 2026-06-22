@@ -387,3 +387,13 @@ mean(poisson_sample == 0)
 
 # Use dpois to find the exact probability that a draw is 0
 dpois(0, 2)
+
+#Demonstrate additive property of Poisson distributions via simulation
+# Simulate 100,000 draws from Poisson(1)
+X <- rpois(100000, 1)
+# Simulate 100,000 draws from Poisson(2)
+Y <- rpois(100000, 2)
+# Add X and Y together to create Z
+Z <- X + Y
+# Use compare_histograms to compare Z to the Poisson(3)
+compare_histograms(Z, rpois(100000, 3))
