@@ -40,3 +40,11 @@ summary_stats <- df %>%
 summary_stats
 
 #Customers who churned paid on average $74.40/month compared to $61.30/month for those who stayed. 
+
+
+# Linear regression: predict MonthlyCharges from tenure
+mdl_charges_vs_tenure <- lm(MonthlyCharges ~ tenure, data = df)
+mdl_charges_vs_tenure
+# See the result
+mdl_charges_vs_tenure_no_intercept <- lm(MonthlyCharges ~ tenure + 0, data = df)
+mdl_charges_vs_tenure_no_intercept
