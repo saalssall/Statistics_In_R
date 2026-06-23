@@ -30,3 +30,13 @@ ggplot(df, aes(MonthlyCharges)) +
   # Facet the plot so each house age group gets its own panel
   facet_wrap(vars(PhoneService))
 
+# Calculating summary statistics 
+summary_stats <- df %>% 
+  # Group by churn
+  group_by(Churn) %>% 
+  # Summarize to calculate the mean monthly charges
+  summarize(mean_by_group = mean(MonthlyCharges))
+# See the result
+summary_stats
+
+#Customers who churned paid on average $74.40/month compared to $61.30/month for those who stayed. 
