@@ -48,3 +48,5 @@ mdl_charges_vs_tenure
 # See the result
 mdl_charges_vs_tenure_no_intercept <- lm(MonthlyCharges ~ tenure + 0, data = df)
 mdl_charges_vs_tenure_no_intercept
+
+
