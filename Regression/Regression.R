@@ -101,4 +101,16 @@ tidy(mdl_charges_vs_tenure)
 augment(mdl_charges_vs_tenure)
 # Get the model-level elements of the model
 glance(mdl_charges_vs_tenure)
-s
+
+
+
+# Using churn_df, plot tenure vs MonthlyCharges
+ggplot(df, aes(tenure, MonthlyCharges)) +
+  # Make it a scatter plot
+  geom_point() +
+  # Add a line at y = x, colored green, size 1
+  geom_abline(slope = 1, intercept = 0, color = 'green', size = 1) +
+  # Add a linear regression trend line, no std. error ribbon
+  geom_smooth(method = "lm", se = FALSE) +
+  # Fix the coordinate ratio
+  coord_fixed()
