@@ -7,6 +7,7 @@ install.packages("ggplot2")
 library(dplyr)
 library(ggplot2)
 library(readr)
+library(broom)
 getwd()
 df <- read_csv("Data/telecom_churn.csv")
 head(df, 10)
@@ -93,3 +94,11 @@ explanatory_data %>%
 # Compare to the results from predict()
 predict(mdl_charges_vs_tenure, explanatory_data)
 
+
+# Get the coefficient-level elements of the model
+tidy(mdl_charges_vs_tenure)
+# Get the observation-level elements of the model
+augment(mdl_charges_vs_tenure)
+# Get the model-level elements of the model
+glance(mdl_charges_vs_tenure)
+s
