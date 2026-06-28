@@ -69,3 +69,9 @@ ggplot(df, aes(tenure, MonthlyCharges)) +
   # Add a point layer of prediction data, colored yellow
   geom_point(data = prediction_data, color = "yellow")
 
+#Extracting elements of the model
+coefficients(mdl_charges_vs_tenure)
+fitted(mdl_charges_vs_tenure)
+residuals(mdl_charges_vs_tenure)
+summary(mdl_charges_vs_tenure)
+
